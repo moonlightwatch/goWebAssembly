@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>测试页面</h1>
+    <p id="ball-location">[0, 0]</p>
+
+    <span id="ball" style="position: absolute;border-radius: 20px; width:40px; height: 40px; background-color: blueviolet;"></span>
+
+    <script src="static/wasm_exec.js"></script>
+    <script>
+        const go = new Go();
+        WebAssembly.instantiateStreaming(fetch("static/main.wasm"), go.importObject)
+            .then((result) => go.run(result.instance));
+    </script>
+</body>
+
+</html>
